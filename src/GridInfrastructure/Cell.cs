@@ -19,9 +19,14 @@ namespace GridInfrastructure
 
         public Cell West { get; set; }
 
-        private Dictionary<Cell, bool> links; 
+        private Dictionary<Cell, bool> links;
 
-        public void Initialize(int _row, int _column)
+        public Cell(int _row, int _column)
+        {
+            Initialize(_row, _column);
+        }
+
+        private void Initialize(int _row, int _column)
         {
             row = _row;
             column = _column;
