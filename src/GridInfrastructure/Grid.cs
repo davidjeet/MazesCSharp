@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace GridInfrastructure
 {
-    public class Grid 
+    public class Grid
     {
         private Cell[,] grid;
 
-        public int Rows { get; set; }
-        public int Columns { get; set; }
+        public int Rows { get; set; } = 0;
+        public int Columns { get; set; } = 0;
 
         public int Size { get { return Rows * Columns; } }
 
@@ -33,7 +33,7 @@ namespace GridInfrastructure
         private void PrepareGrid()
         {
             grid = new Cell[Rows, Columns];
-            for(var i=0; i< Rows; i++)
+            for (var i = 0; i < Rows; i++)
             {
                 for (var j = 0; j < Rows; j++)
                 {
@@ -44,12 +44,13 @@ namespace GridInfrastructure
 
         private void ConfigureCells()
         {
-            foreach(var cell in grid)
+            foreach (var cell in grid)
             {
+                ////Console.WriteLine($"({cell.row},{cell.column})");
                 cell.North = this[cell.row - 1, cell.column];
                 cell.South = this[cell.row + 1, cell.column];
-                cell.East = this[cell.row, cell.column - 1];
-                cell.West = this[cell.row, cell.column + 1];
+                cell.West = this[cell.row, cell.column - 1];
+                cell.East = this[cell.row, cell.column + 1];
             }
         }
 
@@ -65,36 +66,95 @@ namespace GridInfrastructure
             }
         }
 
+        public IEnumerable<Cell> GetAllCells()
+        {
+            for (int i = 0; i < Rows; i++)
+            {
+                for (var j = 0; j < Columns; j++)
+                {
+                    yield return this[i, j];
+                }
+            }
+        }
+
         private Cell Random_Cell()
         {
-            var i = GetRandomNumber(0, Rows-1);
+            var i = GetRandomNumber(0, Rows - 1);
             var j = GetRandomNumber(0, Columns - 1);
             return this[i, j];
         }
 
-        
+        #region To Display / Debug Grid
 
-        // DEPREACTED
-        ////private void ConfigureCells()
-        ////{
-        ////    for (var row = 0; row < Rows; row++)
-        ////    {
-        ////        for (var column = 0; column < Rows; column++)
-        ////        {
-        ////            this[row, column].North = this[row - 1, column];
-        ////            this[row, column].South = this[row + 1, column];
-        ////            this[row, column].East = this[row, column - 1];
-        ////            this[row, column].West = this[row, column + 1];
-        ////        }
-        ////    }
-        ////}
+        public string ToString(bool displayGridCoordinates)
+        {
+            var output = "+";
+
+            // Top border
+            for (int i = 0; i < Columns; i++)
+            {
+                var border = "---+";
+                output += border;
+            }
+            output += System.Environment.NewLine;
+
+            // Middle
+            for (var i = 0; i < Rows; i++)
+            {
+                var row = GetRow(i);
+                var top = "|";
+                var bottom = "+";
+
+                foreach (var cell in row)
+                {
+                    //3 spaces or print coordinates for debugging
+                    var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : "   ";
+                    var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
+                    top += body + eastBoundary;
+
+                    var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
+                    var corner = "+";
+                    bottom += southBoundary + corner;
+                }
+
+                output += top + System.Environment.NewLine;
+                output += bottom + System.Environment.NewLine;
+            }
+
+            return output;
+        }
+
+        public override string ToString()
+        {
+            return ToString(false);
+        }
+
+        public string ToDebug()
+        {
+            var output = string.Empty;
+            foreach (var cell in grid)
+            {
+                output += $"({cell.row},{cell.column}) : ";
+                output += (cell.IsLinked(cell.North)) ? "1, " : "0, ";
+                output += (cell.IsLinked(cell.South)) ? "1, " : "0, ";
+                output += (cell.IsLinked(cell.East)) ? "1, " : "0, ";
+                output += (cell.IsLinked(cell.West)) ? "1" : "0";
+
+                output += System.Environment.NewLine;
+            }
+
+
+            return output;
+        }
+
+        #endregion
 
         #region Helper Methods  
 
         /// Randon Number Helper
         private static readonly Random rnd = new Random();
         private static readonly object syncLock = new object();
-        private static int GetRandomNumber(int min, int max)
+        public static int GetRandomNumber(int min, int max)
         {
             lock (syncLock)
             { // synchronize

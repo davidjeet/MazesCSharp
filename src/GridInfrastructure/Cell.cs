@@ -63,11 +63,12 @@ namespace GridInfrastructure
 
         public bool IsLinked(Cell cell)
         {
+            if (cell == null) return false;
             return links.ContainsKey(cell);
         }
 
         /// <summary>All cells arround this cell (connected or not).</summary>
-        public List<Cell> Neighbors()
+        public List<Cell> GetAllNeighborsOfCell()
         {
             var list = new List<Cell>();
 
