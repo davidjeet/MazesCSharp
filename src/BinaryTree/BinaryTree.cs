@@ -9,12 +9,6 @@ namespace Binary_Tree_Demo
 {
     public class BinaryTree
     {
-        //TODO:
-        // ##### 0. May be working but just the row iteration is messed up 
-        // 1. Look at the grid generation (or the decision branching)
-        // 2. Look at the display
-        // 3. Or the problem is both
-
         public static void Run(ref Grid grid)
         {
             foreach (var cell in grid.GetAllCells())

@@ -14,8 +14,8 @@ namespace Binary_Tree_Demo
             var grid = new Grid(4, 4);
             BinaryTree.Run(ref grid);
 
-            System.Console.WriteLine(grid.ToString(true));
-            System.Console.WriteLine(grid.ToDebug());
+            Console.WriteLine(grid.ToString(false));
+            ////Console.WriteLine(grid.ToDebug());
             Console.ReadKey();
         }
     }

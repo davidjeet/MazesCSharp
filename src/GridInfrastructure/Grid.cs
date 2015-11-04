@@ -66,6 +66,21 @@ namespace GridInfrastructure
             }
         }
 
+        public List<List<Cell>> GetAllRows()
+        {
+            var results = new List<List<Cell>>();
+            for (var i = 0; i < Rows; i++)
+            {
+                var innerList = new List<Cell>();
+                for (var j = 0; j < Rows; j++)
+                {
+                    innerList.Add(this[i, j]);
+                }
+                results.Add(innerList);
+            }
+            return results;
+        }
+
         public IEnumerable<Cell> GetAllCells()
         {
             for (int i = 0; i < Rows; i++)
@@ -99,9 +114,8 @@ namespace GridInfrastructure
             output += System.Environment.NewLine;
 
             // Middle
-            for (var i = 0; i < Rows; i++)
+            foreach (var row in this.GetAllRows())
             {
-                var row = GetRow(i);
                 var top = "|";
                 var bottom = "+";
 

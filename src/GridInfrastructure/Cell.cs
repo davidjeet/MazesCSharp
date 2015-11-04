@@ -84,6 +84,14 @@ namespace GridInfrastructure
             return list;
         }
 
+        #region ToString() implementation
+
+        public override string ToString()
+        {
+            return $"({this.row},{this.column})";
+        }
+
+        #endregion
 
         #region IEquatable and other such things...
         public bool Equals(Cell other)
