@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using GridInfrastructure;
 
-namespace Binary_Tree_Demo
+namespace Dijkstra_Demo
 {
     public class BinaryTree
     {

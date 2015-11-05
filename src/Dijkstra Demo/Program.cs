@@ -5,17 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 using GridInfrastructure;
 
-namespace Binary_Tree_Demo
+namespace Dijkstra_Demo
 {
     class Program
     {
         static void Main(string[] args)
         {
-            IGrid grid = new Grid(4, 4);
+            IGrid grid = new DistanceGrid(5, 5);
             BinaryTree.Run(ref grid);
 
+            var start = grid[0, 0];
+            var distances = start.distances;
+
+            var grid2 = (DistanceGrid)grid;
+            grid2.distances = distances;
+
             Console.WriteLine(grid.ToString(false));
-            ////Console.WriteLine(grid.ToDebug());
             Console.ReadKey();
         }
     }

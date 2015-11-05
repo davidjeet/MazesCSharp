@@ -7,11 +7,12 @@ using System.Threading.Tasks;
 
 namespace GridInfrastructure
 {
-    public class Grid
+    public class Grid : IGrid
     {
-        private Cell[,] grid;
+        protected Cell[,] grid;
 
         public int Rows { get; set; } = 0;
+
         public int Columns { get; set; } = 0;
 
         public int Size { get { return Rows * Columns; } }
@@ -21,7 +22,7 @@ namespace GridInfrastructure
             Initialize(_rows, _columns);
         }
 
-        private void Initialize(int _rows, int _columns)
+        protected void Initialize(int _rows, int _columns)
         {
             Rows = _rows;
             Columns = _columns;
@@ -30,7 +31,7 @@ namespace GridInfrastructure
             ConfigureCells();
         }
 
-        private void PrepareGrid()
+        protected void PrepareGrid()
         {
             grid = new Cell[Rows, Columns];
             for (var i = 0; i < Rows; i++)
@@ -42,7 +43,7 @@ namespace GridInfrastructure
             }
         }
 
-        private void ConfigureCells()
+        protected void ConfigureCells()
         {
             foreach (var cell in grid)
             {
@@ -54,7 +55,7 @@ namespace GridInfrastructure
             }
         }
 
-        private IEnumerable<Cell> GetRow(int row)
+        protected IEnumerable<Cell> GetRow(int row)
         {
             for (var i = 0; i < Rows; i++)
             {
@@ -92,7 +93,7 @@ namespace GridInfrastructure
             }
         }
 
-        private Cell Random_Cell()
+        protected Cell Random_Cell()
         {
             var i = GetRandomNumber(0, Rows - 1);
             var j = GetRandomNumber(0, Columns - 1);
@@ -100,6 +101,11 @@ namespace GridInfrastructure
         }
 
         #region To Display / Debug Grid
+
+        public virtual string ContentsOf(Cell cell)
+        {
+            return "   ";
+        }
 
         public string ToString(bool displayGridCoordinates)
         {
@@ -122,7 +128,7 @@ namespace GridInfrastructure
                 foreach (var cell in row)
                 {
                     //3 spaces or print coordinates for debugging
-                    var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : "   ";
+                    var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
                     var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
                     top += body + eastBoundary;
 
@@ -166,8 +172,8 @@ namespace GridInfrastructure
         #region Helper Methods  
 
         /// Randon Number Helper
-        private static readonly Random rnd = new Random();
-        private static readonly object syncLock = new object();
+        protected static readonly Random rnd = new Random();
+        protected static readonly object syncLock = new object();
         public static int GetRandomNumber(int min, int max)
         {
             lock (syncLock)

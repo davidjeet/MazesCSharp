@@ -11,6 +11,8 @@ namespace GridInfrastructure
         public int row { get; set; } = -1;
         public int column { get; set; } = -1;
 
+        public Distances distances { get { return this.GetDistances(); } }
+
         public Cell North { get; set; }
 
         public Cell South { get; set; }
@@ -84,9 +86,46 @@ namespace GridInfrastructure
             return list;
         }
 
+        #region Distances (needed for Djikstra)
+
+        private Distances GetDistances()
+        {
+            var distances = new Distances(this);
+            var frontier = new List<Cell> { this };
+
+            while (frontier.Any())
+            {
+                var newFrontier = new List<Cell>();
+
+                foreach(var cell in frontier)
+                {
+                    foreach(var linked in cell.Links())
+                    {
+                        ////if (!distances[linked].HasValue) 
+                        if (!distances.ContainsKey(linked))
+                        { 
+                            distances[linked] = distances[cell] + 1;
+                            newFrontier.Add(linked);
+                        }
+                    }
+                }
+
+                frontier = newFrontier;
+            }
+
+            return distances;
+        }
+
+        #endregion
+
         #region ToString() implementation
 
         public override string ToString()
+        {
+            return $"({this.row},{this.column})";
+        }
+
+        public string ToStringDistance()
         {
             return $"({this.row},{this.column})";
         }

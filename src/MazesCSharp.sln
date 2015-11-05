@@ -11,6 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SideWinder Demo", "SideWinder Demo\SideWinder Demo.csproj", "{5D22A1E1-4042-4A14-9F4A-B7FBC43EE432}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{B6AEC113-B90C-4101-B708-3416AEA5B3DB}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkstra Demo", "Dijkstra Demo\Dijkstra Demo.csproj", "{726B1DF2-7EAC-47B1-9B83-F401A7285ED8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +36,10 @@ Global
 		{5D22A1E1-4042-4A14-9F4A-B7FBC43EE432}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D22A1E1-4042-4A14-9F4A-B7FBC43EE432}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D22A1E1-4042-4A14-9F4A-B7FBC43EE432}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726B1DF2-7EAC-47B1-9B83-F401A7285ED8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726B1DF2-7EAC-47B1-9B83-F401A7285ED8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726B1DF2-7EAC-47B1-9B83-F401A7285ED8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726B1DF2-7EAC-47B1-9B83-F401A7285ED8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
