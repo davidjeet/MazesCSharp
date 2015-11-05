@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GridInfrastructure
+namespace Infrastructure.Core
 {
     public class Cell : IEquatable<Cell>
     {

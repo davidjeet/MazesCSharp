@@ -43,7 +43,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BinaryTree.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -51,9 +50,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GridInfrastructure\GridInfrastructure.csproj">
-      <Project>{7148b9af-c561-4719-93f9-640371c5632e}</Project>
-      <Name>GridInfrastructure</Name>
+    <ProjectReference Include="..\Algorithms\Algorithms.csproj">
+      <Project>{d160b9a6-1ddb-40bb-a8bb-b66a76ca33bd}</Project>
+      <Name>Algorithms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{5c612031-80fa-4a14-a12f-0189a4744352}</Project>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

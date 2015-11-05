@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GridInfrastructure
+namespace Infrastructure.Core
 {
     public class Distances
     {
@@ -27,7 +27,6 @@ namespace GridInfrastructure
         {
             return cells.ContainsKey(cell);
         }
-
 
         // indexer on the Distances object that takes a cell and returns its distance value (relative to root = 0)
         public int? this[Cell cell]

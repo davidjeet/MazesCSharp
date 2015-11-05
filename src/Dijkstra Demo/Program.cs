@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GridInfrastructure;
+using Infrastructure.Algorithms;
+using Infrastructure.Core;
+using Infrastructure.Core.Interfaces;
 
 namespace Dijkstra_Demo
 {

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GridInfrastructure;
+using Infrastructure.Core;
+using Infrastructure.Core.Interfaces;
 
-namespace Dijkstra_Demo
+namespace Infrastructure.Algorithms
 {
     public class BinaryTree
     {

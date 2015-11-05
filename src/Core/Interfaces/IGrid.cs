@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GridInfrastructure
+namespace Infrastructure.Core.Interfaces
 {
     public interface IGrid
     {

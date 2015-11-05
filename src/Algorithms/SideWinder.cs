@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using GridInfrastructure;
+using Infrastructure.Core;
+using Infrastructure.Core.Interfaces;
 
-namespace SideWinder_Demo
+namespace Infrastructure.Algorithms
 {
     public class SideWinder
     {
-        public static void Run(ref Grid grid)
+        public static void Run(ref IGrid grid)
         {
             foreach (var row in grid.GetAllRows())
             {
