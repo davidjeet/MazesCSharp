@@ -16,8 +16,8 @@ namespace SideWinder_Demo
             IGrid grid = new Grid(6, 6);
             SideWinder.Run(ref grid);
 
-            Console.WriteLine(grid.ToString(false));
-            //Console.WriteLine(grid.ToDebug());
+            Console.WriteLine(grid.ToString(true));
+            ////Console.WriteLine(grid.ToDebug());
             Console.ReadKey();
         }
     }

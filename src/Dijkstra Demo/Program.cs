@@ -19,10 +19,14 @@ namespace Dijkstra_Demo
             var start = grid[0, 0];
             var distances = start.distances;
 
-            var grid2 = (DistanceGrid)grid;
-            grid2.distances = distances;
-
+            var distanceGrid = (DistanceGrid)grid; //casting to a distance grid to take advantage of the "distances" property
+            distanceGrid.CellDistances = distances;
             Console.WriteLine(grid.ToString(false));
+
+            Console.WriteLine("Path from NW corner to SW corner:");
+            distanceGrid.CellDistances = distances.PathToGoal(grid[grid.Rows-1, 0]);
+            Console.WriteLine(grid.ToString(false));
+
             Console.ReadKey();
         }
     }

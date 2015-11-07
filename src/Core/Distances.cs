@@ -18,6 +18,29 @@ namespace Infrastructure.Core
             cells.Add(_root, 0);
         }
 
+        public Distances PathToGoal(Cell goal)
+        {
+            var current = goal;
+
+            var breadcrumbs = new Distances(root);
+            breadcrumbs[current] = cells[current];
+
+            do
+            {
+                foreach (Cell neighbor in current.Links())
+                {
+                    if (cells[neighbor] < cells[current])
+                    {
+                        breadcrumbs[neighbor] = cells[neighbor];
+                        current = neighbor;
+                        break;
+                    }
+                }
+            } while(current != root);
+
+            return breadcrumbs;
+        }
+
         public IEnumerable<Cell> Cells()
         {
             return cells.Keys;
@@ -32,8 +55,8 @@ namespace Infrastructure.Core
         public int? this[Cell cell]
         {
             get
-            {
-                return cells[cell];
+            {                
+                return cells.ContainsKey(cell) ? cells[cell] : null;
             }
             set
             {

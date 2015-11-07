@@ -9,7 +9,7 @@ namespace Infrastructure.Core
 {
     public class DistanceGrid : Grid
     {
-        public Distances distances { get; set; } = null;
+        public Distances CellDistances { get; set; } = null;
 
         public DistanceGrid(int _rows, int _columns) : base(_rows, _columns)
         {
@@ -17,9 +17,9 @@ namespace Infrastructure.Core
 
         public override string ContentsOf(Cell cell)
         {
-            if (distances != null && distances[cell] != null)
+            if (CellDistances != null && CellDistances[cell] != null)
             {
-                var distance = distances[cell].Value;
+                var distance = CellDistances[cell].Value;
                 return $" {Convert.ToString(distance, 16)} ";
             }
             return base.ContentsOf(cell); 
