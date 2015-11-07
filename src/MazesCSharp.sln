@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Binary Tree Demo", "Binary 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Maze Demos", "Maze Demos", "{05C79038-4F93-4190-B5DE-3AFFBE15F75F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dijkstra Longest Path Demo", "Dijkstra Longest Path Demo\Dijkstra Longest Path Demo.csproj", "{5C8D307E-830A-4C2B-AD43-F85D79F225B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{BD85336F-AA99-49CE-B508-76C1F946AECB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD85336F-AA99-49CE-B508-76C1F946AECB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD85336F-AA99-49CE-B508-76C1F946AECB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C8D307E-830A-4C2B-AD43-F85D79F225B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C8D307E-830A-4C2B-AD43-F85D79F225B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C8D307E-830A-4C2B-AD43-F85D79F225B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C8D307E-830A-4C2B-AD43-F85D79F225B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,5 +64,6 @@ Global
 		{5C612031-80FA-4A14-A12F-0189A4744352} = {5701198F-E0C5-4670-892F-495F5D347221}
 		{D160B9A6-1DDB-40BB-A8BB-B66A76CA33BD} = {5701198F-E0C5-4670-892F-495F5D347221}
 		{BD85336F-AA99-49CE-B508-76C1F946AECB} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
+		{5C8D307E-830A-4C2B-AD43-F85D79F225B5} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 	EndGlobalSection
 EndGlobal
