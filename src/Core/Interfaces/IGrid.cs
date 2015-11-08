@@ -9,6 +9,7 @@ namespace Infrastructure.Core.Interfaces
         int Columns { get; set; }
         int Rows { get; set; }
         int Size { get; }
+        Cell GetRandomCell { get; }
 
         string ContentsOf(Cell cell);
         IEnumerable<Cell> GetAllCells();

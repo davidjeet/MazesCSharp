@@ -23,6 +23,16 @@ namespace Infrastructure.Core
             Initialize(_rows, _columns);
         }
 
+        public Cell GetRandomCell
+        {
+            get
+            {
+                var i = GetRandomNumber(0, Rows - 1);
+                var j = GetRandomNumber(0, Columns - 1);
+                return this[i, j];
+            }
+        }
+
         protected void Initialize(int _rows, int _columns)
         {
             Rows = _rows;
@@ -92,13 +102,6 @@ namespace Infrastructure.Core
                     yield return this[i, j];
                 }
             }
-        }
-
-        protected Cell Random_Cell()
-        {
-            var i = GetRandomNumber(0, Rows - 1);
-            var j = GetRandomNumber(0, Columns - 1);
-            return this[i, j];
         }
 
         #region To Display / Debug Grid
