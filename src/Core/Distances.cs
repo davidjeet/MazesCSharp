@@ -41,23 +41,27 @@ namespace Infrastructure.Core
             return breadcrumbs;
         }
 
-        public Tuple<Cell, int?> Max()
+        public MaxResult Max
         {
-            int? maxDistance = 0;
-            Cell maxCell = root;
-
-            foreach(var key in cells.Keys)
+            get
             {
-                var distance = cells[key];
-                if (distance > maxDistance)
-                {
-                    maxCell = key;
-                    maxDistance = distance;
-                }
-            }
+                int? maxDistance = 0;
+                Cell maxCell = root;
 
-            return new Tuple<Cell, int?>(maxCell, maxDistance);
+                foreach (var key in cells.Keys)
+                {
+                    var distance = cells[key];
+                    if (distance > maxDistance)
+                    {
+                        maxCell = key;
+                        maxDistance = distance;
+                    }
+                }
+
+                return new MaxResult(maxCell, maxDistance);
+            }
         }
+
 
         public IEnumerable<Cell> Cells()
         {
