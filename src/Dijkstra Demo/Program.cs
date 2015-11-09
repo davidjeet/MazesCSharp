@@ -17,7 +17,7 @@ namespace Dijkstra_Demo
             BinaryTree.Run(ref grid);
 
             var start = grid[0, 0];
-            var distances = start.distances;
+            var distances = start.Distances;
 
             var distanceGrid = (DistanceGrid)grid; //casting to a distance grid to take advantage of the "distances" property
             distanceGrid.CellDistances = distances;

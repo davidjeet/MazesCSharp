@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Core.Interfaces;
+using static Infrastructure.Core.Helper;
 
 namespace Infrastructure.Core
 {
@@ -175,16 +176,7 @@ namespace Infrastructure.Core
 
         #region Helper Methods  
 
-        /// Randon Number Helper
-        protected static readonly Random rnd = new Random();
-        protected static readonly object syncLock = new object();
-        public static int GetRandomNumber(int min, int max)
-        {
-            lock (syncLock)
-            { // synchronize
-                return rnd.Next(min, max);
-            }
-        }
+
 
         /// <summary>IEnumerator for 2-D cell array.</summary>
         public IEnumerator<Cell> GetEnumerator()

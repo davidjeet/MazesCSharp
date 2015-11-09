@@ -17,12 +17,12 @@ namespace Dijkstra_Longest_Path_Demo
             BinaryTree.Run(ref grid);
 
             var start = grid[0, 0];
-            Distances distances = start.distances;
+            Distances distances = start.Distances;
 
             var newStart = distances.Max.Cell;
             var distance = distances.Max.Distance;
 
-            var newDistances = newStart.distances;
+            var newDistances = newStart.Distances;
             MaxResult result = newDistances.Max;
 
             DistanceGrid distanceGrid = (DistanceGrid)grid;

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Core;
 using Infrastructure.Core.Interfaces;
+using static Infrastructure.Core.Helper;
 
 namespace Infrastructure.Algorithms
 {
@@ -18,7 +19,7 @@ namespace Infrastructure.Algorithms
                 if (cell.North != null) neighbors.Add(cell.North);
                 if (cell.East != null) neighbors.Add(cell.East);
 
-                int index = Grid.GetRandomNumber(0, neighbors.Count);
+                int index = GetRandomNumber(0, neighbors.Count);
                 if (neighbors.Count > 0)
                 {
                     Cell neighbor = neighbors[index];

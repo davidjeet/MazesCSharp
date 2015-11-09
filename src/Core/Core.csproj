@@ -44,6 +44,7 @@
     <Compile Include="DistanceGrid.cs" />
     <Compile Include="Distances.cs" />
     <Compile Include="Grid.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="Interfaces\IGrid.cs" />
     <Compile Include="MaxResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

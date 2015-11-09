@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Core;
 using Infrastructure.Core.Interfaces;
+using static Infrastructure.Core.Helper;
 
 namespace Infrastructure.Algorithms
 {
@@ -22,11 +23,11 @@ namespace Infrastructure.Algorithms
                     bool atEasternBoundary = (cell.East == null);
                     bool atNorthernBoundary = (cell.North == null);
 
-                    bool shouldCloseOut = atEasternBoundary || (!atNorthernBoundary && (Grid.GetRandomNumber(0, 2) == 0));
+                    bool shouldCloseOut = atEasternBoundary || (!atNorthernBoundary && (GetRandomNumber(0, 2) == 0));
 
                     if (shouldCloseOut)
                     {
-                        var index = Grid.GetRandomNumber(0, run.Count());
+                        var index = GetRandomNumber(0, run.Count());
                         var member = run[index];
 
                         if (member.North !=null)
