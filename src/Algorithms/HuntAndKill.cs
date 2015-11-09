@@ -16,11 +16,22 @@ namespace Infrastructure.Algorithms
 
             while(current != null) //assumption that might be wrong
             {
-                var unvisited_neighbors = current.Neighbors.Where(x => x.Links().Any()); // get all neighbors of cell that has links
+                var unvisitedNeighbors = current.Neighbors.Where(x => x.Links.Any()); // get all neighbors of cell that has links
 
-                if (unvisited_neighbors.Any())
+                if (unvisitedNeighbors.Any())
                 {
-                    var neighbor = unvisited_neighbors.Sample<Cell>();
+                    var neighbor = unvisitedNeighbors.Sample<Cell>();
+                    current.Link(neighbor);
+                    current = neighbor;
+                }
+                else
+                {
+                    current = null;
+                }
+
+                foreach(var cell in grid)
+                {
+                    var visitedNeighbors = cell.Neighbors.Where(x => x.Links.Any());
                 }
             }
 

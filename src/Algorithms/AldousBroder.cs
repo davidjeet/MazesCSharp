@@ -23,7 +23,7 @@ namespace Infrastructure.Algorithms
                 int index = GetRandomNumber(0, neighbors.Count);
                 var neighbor = neighbors[index];
 
-                var links = neighbor.Links();
+                var links = neighbor.Links;
                 if (links.Count == 0)
                 {
                     cell.Link(neighbor);

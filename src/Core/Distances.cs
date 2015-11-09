@@ -27,7 +27,7 @@ namespace Infrastructure.Core
 
             do
             {
-                foreach (Cell neighbor in current.Links())
+                foreach (Cell neighbor in current.Links)
                 {
                     if (cells[neighbor] < cells[current])
                     {

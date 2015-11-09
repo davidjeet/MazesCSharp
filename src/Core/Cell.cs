@@ -25,7 +25,7 @@ namespace Infrastructure.Core
 
                     foreach (var cell in frontier)
                     {
-                        foreach (var linked in cell.Links())
+                        foreach (var linked in cell.Links)
                         {
                             if (!distances.ContainsKey(linked))
                             {
@@ -78,6 +78,15 @@ namespace Infrastructure.Core
             Initialize(_row, _column);
         }
 
+        /// <summary>All cells linked to this cell.</summary>
+        public List<Cell> Links
+        {
+            get
+            {
+                return links.Keys.ToList();
+            }
+        }
+
         private void Initialize(int _row, int _column)
         {
             row = _row;
@@ -105,12 +114,6 @@ namespace Infrastructure.Core
                 cell.UnLink(this, false);
 
             return this;
-        }
-
-        /// <summary>All cells linked to this cell.</summary>
-        public List<Cell> Links()
-        {
-            return links.Keys.ToList();
         }
 
         public bool IsLinked(Cell cell)
