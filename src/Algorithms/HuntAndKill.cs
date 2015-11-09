@@ -16,7 +16,7 @@ namespace Infrastructure.Algorithms
 
             while(current != null) //assumption that might be wrong
             {
-                var unvisitedNeighbors = current.Neighbors.Where(x => x.Links.Any()); // get all neighbors of cell that has links
+                var unvisitedNeighbors = current.Neighbors.Where(x => x.Links.Count == 0); // get all neighbors of cell that does not have any links (yet)
 
                 if (unvisitedNeighbors.Any())
                 {
@@ -32,7 +32,7 @@ namespace Infrastructure.Algorithms
                 foreach(var cell in grid)
                 {
                     var visitedNeighbors = cell.Neighbors.Where(x => x.Links.Any());
-                    if (cell.Links.Any() && visitedNeighbors.Any())
+                    if (cell.Links.Count == 0 && visitedNeighbors.Any())
                     {
                         current = cell;
 

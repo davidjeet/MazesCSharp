@@ -13,7 +13,7 @@ namespace Hunt_And_Kill_Demo
     {
         static void Main(string[] args)
         {
-            IGrid grid = new Grid(10, 10);
+            IGrid grid = new Grid(19, 19);
             HuntAndKill.Run(ref grid);
 
             Console.WriteLine(grid.ToString(false));
