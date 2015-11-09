@@ -34,6 +34,18 @@ namespace Infrastructure.Core
             }
         }
 
+        public IEnumerable<Cell> DeadEnds
+        {
+            get
+            {
+                foreach (var cell in grid)
+                {
+                    if (cell.Links.Count == 1)
+                        yield return cell;
+                }
+            }
+        }
+
         protected void Initialize(int _rows, int _columns)
         {
             Rows = _rows;

@@ -18,6 +18,9 @@ namespace Binary_Tree_Demo
 
             Console.WriteLine(grid.ToString(true));
             ////Console.WriteLine(grid.ToDebug());
+
+            var deadends = ((Grid)grid).DeadEnds;
+            Console.WriteLine($"There were {deadends.Count()} dead ends found.");
             Console.ReadKey();
         }
     }
