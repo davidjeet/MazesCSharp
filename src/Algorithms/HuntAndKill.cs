@@ -32,6 +32,15 @@ namespace Infrastructure.Algorithms
                 foreach(var cell in grid)
                 {
                     var visitedNeighbors = cell.Neighbors.Where(x => x.Links.Any());
+                    if (cell.Links.Any() && visitedNeighbors.Any())
+                    {
+                        current = cell;
+
+                        var neighbor = visitedNeighbors.Sample<Cell>();
+                        current.Link(neighbor);
+
+                        break;
+                    }
                 }
             }
 
