@@ -17,14 +17,15 @@ namespace Infrastructure.Core
 
         public int Columns { get; set; } = 0;
 
-        public int Size { get { return Rows * Columns; } }
+        public virtual int Size { get { return Rows * Columns; } }
 
+        // Constructor
         public Grid(int _rows, int _columns)
         {
             Initialize(_rows, _columns);
         }
 
-        public Cell GetRandomCell
+        public virtual Cell GetRandomCell
         {
             get
             {
@@ -46,7 +47,7 @@ namespace Infrastructure.Core
             }
         }
 
-        protected void Initialize(int _rows, int _columns)
+        protected virtual void Initialize(int _rows, int _columns)
         {
             Rows = _rows;
             Columns = _columns;
@@ -55,7 +56,7 @@ namespace Infrastructure.Core
             ConfigureCells();
         }
 
-        protected void PrepareGrid()
+        protected virtual void PrepareGrid()
         {
             grid = new Cell[Rows, Columns];
             for (var i = 0; i < Rows; i++)
