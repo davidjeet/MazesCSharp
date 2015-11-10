@@ -8,9 +8,9 @@ using Infrastructure.Core.Interfaces;
 
 namespace Infrastructure.Algorithms
 {
-    public class HuntAndKill
+    public class HuntAndKill : IAlgorithms
     {
-        public static void Run(ref IGrid grid)
+        public void Run(ref IGrid grid)
         {
             var current = grid.GetRandomCell;
 

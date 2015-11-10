@@ -14,7 +14,7 @@ namespace Dijkstra_Longest_Path_Demo
         static void Main(string[] args)
         {
             IGrid grid = new DistanceGrid(5, 5);
-            BinaryTree.Run(ref grid);
+            new BinaryTree().Run(ref grid);
 
             var start = grid[0, 0];
             Distances distances = start.Distances;

@@ -9,9 +9,9 @@ using static Infrastructure.Core.Helper;
 
 namespace Infrastructure.Algorithms
 {
-    public class BinaryTree
+    public class BinaryTree : IAlgorithms
     {
-        public static void Run(ref IGrid grid)
+        public void Run(ref IGrid grid)
         {
             foreach (var cell in grid.GetAllCells())
             {

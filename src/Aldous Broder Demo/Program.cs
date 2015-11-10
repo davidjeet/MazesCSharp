@@ -14,7 +14,7 @@ namespace Aldous_Broder_Demo
         static void Main(string[] args)
         {
             IGrid grid = new Grid(10, 10);
-            AldousBroder.Run(ref grid);
+            new AldousBroder().Run(ref grid);
 
             Console.WriteLine(grid.ToString(false));
             ////Console.WriteLine(grid.ToDebug());

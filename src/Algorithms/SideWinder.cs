@@ -9,9 +9,9 @@ using static Infrastructure.Core.Helper;
 
 namespace Infrastructure.Algorithms
 {
-    public class SideWinder
+    public class SideWinder : IAlgorithms
     {
-        public static void Run(ref IGrid grid)
+        public void Run(ref IGrid grid)
         {
             foreach (var row in grid.GetAllRows())
             {

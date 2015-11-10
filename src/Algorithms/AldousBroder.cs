@@ -9,9 +9,9 @@ using static Infrastructure.Core.Helper;
 
 namespace Infrastructure.Algorithms
 {
-    public class AldousBroder
+    public class AldousBroder : IAlgorithms
     {
-        public static void Run(ref IGrid grid)
+        public void Run(ref IGrid grid)
         {
             var cell = grid.GetRandomCell;
             var unvisited = grid.Size - 1;
