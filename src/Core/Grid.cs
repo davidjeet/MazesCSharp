@@ -75,7 +75,9 @@ namespace Infrastructure.Core
         {
             foreach (var cell in grid)
             {
-                if (cell != null)
+                //cell should always have a value, *but*...
+                //...null conditional check needed for masked grid implementation               
+                if (cell != null) 
                 { 
                     cell.North = this[cell.row - 1, cell.column];
                     cell.South = this[cell.row + 1, cell.column];
@@ -150,7 +152,7 @@ namespace Infrastructure.Core
 
                 foreach (var cell in row)
                 {
-                    //3 spaces or print coordinates for debugging
+                    //null check added for maskedgrid
                     if (cell != null)
                     {
                         var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
@@ -163,6 +165,7 @@ namespace Infrastructure.Core
                     }
                     else
                     {
+                        //what to print for a null cell (only relevent if using a masked grid)                     
                         var body = "   ";
                         var eastBoundary = "|";
                         top += body + eastBoundary;
