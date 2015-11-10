@@ -188,8 +188,6 @@ namespace Infrastructure.Core
 
         #region Helper Methods  
 
-
-
         /// <summary>IEnumerator for 2-D cell array.</summary>
         public IEnumerator<Cell> GetEnumerator()
         {

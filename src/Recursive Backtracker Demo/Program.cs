@@ -13,6 +13,11 @@ namespace Recursive_Backtracker_Demo
     {
         static void Main(string[] args)
         {
+            var array = Enumerable.Range(0, 4)
+                      .Select(x => Enumerable.Repeat(true, 4).ToArray())
+                      .ToArray();
+
+
             IGrid grid = new Grid(10, 10);
             new RecursiveBacktracker().Run(ref grid);
 

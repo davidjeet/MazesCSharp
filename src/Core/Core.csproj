@@ -46,6 +46,7 @@
     <Compile Include="Grid.cs" />
     <Compile Include="Helper.cs" />
     <Compile Include="Interfaces\IGrid.cs" />
+    <Compile Include="Mask.cs" />
     <Compile Include="MaxResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
