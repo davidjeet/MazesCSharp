@@ -14,11 +14,11 @@ namespace Infrastructure.Algorithms
         {
             var current = grid.GetRandomCell;
 
-            while(current != null) //assumption that might be wrong
+            while(current != null) 
             {
                 var unvisitedNeighbors = current.Neighbors.Where(x => x.Links.Count == 0); // get all neighbors of cell that does not have any links (yet)
 
-                if (unvisitedNeighbors.Any())
+                if (unvisitedNeighbors.Count() > 0)
                 {
                     var neighbor = unvisitedNeighbors.Sample<Cell>();
                     current.Link(neighbor);
@@ -31,8 +31,8 @@ namespace Infrastructure.Algorithms
 
                 foreach(var cell in grid)
                 {
-                    var visitedNeighbors = cell.Neighbors.Where(x => x.Links.Any());
-                    if (cell.Links.Count == 0 && visitedNeighbors.Any())
+                    var visitedNeighbors = cell.Neighbors.Where(x => x.Links.Count() > 0);
+                    if ((cell.Links.Count == 0 || cell.Links== null) && visitedNeighbors.Count() > 0)
                     {
                         current = cell;
 

@@ -12,7 +12,8 @@ namespace Deadend_Counts
     {
         static void Main(string[] args)
         {
-            var algorithms = new IAlgorithms[] { new BinaryTree(), new SideWinder(), new AldousBroder(), new HuntAndKill() };
+            var algorithms = new IAlgorithms[] { new BinaryTree(), new SideWinder(),
+                new AldousBroder(), new HuntAndKill(), new RecursiveBacktracker() };
 
             var tries = 100;
             var size = 20;
@@ -45,7 +46,7 @@ namespace Deadend_Counts
             foreach(var algorithm in sortedAlgorithm)
             {
                 var percentage = (algorithm.Value * 100.0) / (size * size);
-                Console.WriteLine($"{algorithm.Key}: {algorithm.Value}/{size} ({percentage}%)");
+                Console.WriteLine($"{algorithm.Key}: {algorithm.Value}/{size*size} ({percentage}%)");
             }
 
             Console.ReadKey();
