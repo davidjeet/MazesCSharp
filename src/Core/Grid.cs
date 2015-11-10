@@ -71,19 +71,15 @@ namespace Infrastructure.Core
             }
         }
 
-        protected void ConfigureCells()
+        protected virtual void ConfigureCells()
         {
             foreach (var cell in grid)
             {
-                //cell should always have a value, *but*...
-                //...null conditional check needed for masked grid implementation               
-                if (cell != null) 
-                { 
-                    cell.North = this[cell.row - 1, cell.column];
-                    cell.South = this[cell.row + 1, cell.column];
-                    cell.West = this[cell.row, cell.column - 1];
-                    cell.East = this[cell.row, cell.column + 1];
-                }
+
+                cell.North = this[cell.row - 1, cell.column];
+                cell.South = this[cell.row + 1, cell.column];
+                cell.West = this[cell.row, cell.column - 1];
+                cell.East = this[cell.row, cell.column + 1];
             }
         }
 
@@ -132,7 +128,7 @@ namespace Infrastructure.Core
             return "   ";
         }
 
-        public string ToString(bool displayGridCoordinates)
+        public virtual string ToString(bool displayGridCoordinates)
         {
             var output = "+";
 
@@ -151,29 +147,14 @@ namespace Infrastructure.Core
                 var bottom = "+";
 
                 foreach (var cell in row)
-                {
-                    //null check added for maskedgrid
-                    if (cell != null)
-                    {
-                        var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
-                        var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
-                        top += body + eastBoundary;
+                {          
+                    var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
+                    var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
+                    top += body + eastBoundary;
 
-                        var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
-                        var corner = "+";
-                        bottom += southBoundary + corner;
-                    }
-                    else
-                    {
-                        //what to print for a null cell (only relevent if using a masked grid)                     
-                        var body = "   ";
-                        var eastBoundary = "|";
-                        top += body + eastBoundary;
-
-                        var southBoundary = "---";
-                        var corner = "+";
-                        bottom += southBoundary + corner;
-                    }
+                    var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
+                    var corner = "+";
+                    bottom += southBoundary + corner;
                 }
 
                 output += top + System.Environment.NewLine;
