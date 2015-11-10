@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursive Backtracker Demo"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Mask Demo", "Simple Mask Demo\Simple Mask Demo.csproj", "{C798B1B2-3419-4509-A953-E8B348C85827}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mask From File Demo", "Mask From File Demo\Mask From File Demo.csproj", "{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,6 +86,10 @@ Global
 		{C798B1B2-3419-4509-A953-E8B348C85827}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C798B1B2-3419-4509-A953-E8B348C85827}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C798B1B2-3419-4509-A953-E8B348C85827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,5 +106,6 @@ Global
 		{D768C68A-F05D-4568-A1F7-FFC67EEA1DA9} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 		{EFAF810D-3224-4741-993A-49B6CFD211A1} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 		{C798B1B2-3419-4509-A953-E8B348C85827} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
+		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 	EndGlobalSection
 EndGlobal

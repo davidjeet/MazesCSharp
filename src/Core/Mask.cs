@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static Infrastructure.Core.Helper;
+using System.IO;
 
 namespace Infrastructure.Core
 {
@@ -25,6 +26,26 @@ namespace Infrastructure.Core
                     bits[i, j] = true;
         }
 
+        public static Mask ReadFromTextFile(string file)
+        {
+            string[] lines = File.ReadAllLines(file);
+            var rows = lines.Length;
+            var columns = lines.First().Length;
+            var mask = new Mask(rows, columns);
+
+            for(int i=0; i<rows; i++)
+            {
+                for(int j=0; j<columns; j++)
+                {
+                    var line = lines[i].ToCharArray();
+                    mask[i, j] = (line[j] == 'X')
+                               ? false
+                               : true; 
+                }
+            }
+
+            return mask;
+        }
 
         #region Helper Properties/Methods
 
