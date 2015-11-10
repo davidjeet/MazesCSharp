@@ -20,9 +20,12 @@ namespace Infrastructure.Core
         public virtual int Size { get { return Rows * Columns; } }
 
         // Constructor
-        public Grid(int _rows, int _columns)
+        public Grid(int _rows, int _columns, bool useBaseInitializer = true)
         {
-            Initialize(_rows, _columns);
+            if (useBaseInitializer)
+            { 
+                Initialize(_rows, _columns);
+            }
         }
 
         public virtual Cell GetRandomCell
@@ -72,11 +75,13 @@ namespace Infrastructure.Core
         {
             foreach (var cell in grid)
             {
-                ////Console.WriteLine($"({cell.row},{cell.column})");
-                cell.North = this[cell.row - 1, cell.column];
-                cell.South = this[cell.row + 1, cell.column];
-                cell.West = this[cell.row, cell.column - 1];
-                cell.East = this[cell.row, cell.column + 1];
+                if (cell != null)
+                { 
+                    cell.North = this[cell.row - 1, cell.column];
+                    cell.South = this[cell.row + 1, cell.column];
+                    cell.West = this[cell.row, cell.column - 1];
+                    cell.East = this[cell.row, cell.column + 1];
+                }
             }
         }
 
@@ -146,13 +151,26 @@ namespace Infrastructure.Core
                 foreach (var cell in row)
                 {
                     //3 spaces or print coordinates for debugging
-                    var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
-                    var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
-                    top += body + eastBoundary;
+                    if (cell != null)
+                    {
+                        var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
+                        var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
+                        top += body + eastBoundary;
 
-                    var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
-                    var corner = "+";
-                    bottom += southBoundary + corner;
+                        var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
+                        var corner = "+";
+                        bottom += southBoundary + corner;
+                    }
+                    else
+                    {
+                        var body = "   ";
+                        var eastBoundary = "|";
+                        top += body + eastBoundary;
+
+                        var southBoundary = "---";
+                        var corner = "+";
+                        bottom += southBoundary + corner;
+                    }
                 }
 
                 output += top + System.Environment.NewLine;

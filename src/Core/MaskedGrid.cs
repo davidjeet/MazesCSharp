@@ -13,9 +13,10 @@ namespace Infrastructure.Core
         private Mask mask;
         public override int Size { get { return mask.Count; } }
 
-        public MaskedGrid(Mask _mask) : base(_mask.Rows, _mask.Columns)
+        public MaskedGrid(Mask _mask) : base(_mask.Rows, _mask.Columns, false)
         {
             this.mask = _mask;
+            this.Initialize(_mask.Rows, mask.Columns);
         }
 
         protected override void PrepareGrid()
