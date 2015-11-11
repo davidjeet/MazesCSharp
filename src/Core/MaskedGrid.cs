@@ -56,82 +56,174 @@ namespace Infrastructure.Core
             }
         }
 
+
+
+        //some thoughts:
+        //1. Top and middle need to be handled differently. Not just assumed values when you start.
+        //2. Use a i,j coordinate system, not a foreach loop. This gives us finer grain control over boundary cases on how they should be handled.
+        //3. Each cell is responsible for itself *AND*  checking if a border below it is merited, and a border to the left (west) is merited (but see also 2)
+        // In conclusion: I would do a complete re-write of this method.
+
+
+        //private IServiceProvider 
+        private bool IsCellNull(int i, int j)
+        {
+            return this[i, j] == null;
+        }
+
         public override string ToString(bool displayGridCoordinates)
         {
-            string output = "+";
+            var output = new List<string>();
 
-            // Top border
-            for (int i = 0; i < Columns; i++)
+            string topRow = "";
+            for (int i = 0; i < Rows; i++)
             {
-                string border = "    ";
-                if (this[0, i] == null)
+                for (int j = 0; j < Columns; j++)
                 {
-                    if (i == 0) output = "";
+                    if (i==0) // top row
+                    {                        
+                        topRow += (IsCellNull(i, j))
+                            ? "    "
+                            : "---+";
+                    }
                 }
-                else
-                {
-                    border = "---+";
-                }
-
-                output += border;
             }
-            output += System.Environment.NewLine;
+            topRow += Environment.NewLine;
+            output.Add(topRow);
 
-
-
-            //some thoughts:
-            //1. Top and middle need to be handled differently. Not just assumed values when you start.
-            //2. Use a i,j coordinate system, not a foreach loop. This gives us finer grain control over boundary cases on how they should be handled.
-            //3. Each cell is responsible for itself *AND*  checking if a border below it is merited, and a border to the left (west) is merited (but see also 2)
-            // In conclusion: I would do a complete re-write of this method.
-
-            // Middle
-            foreach (var row in this.GetAllRows())
+            for (int i = 0; i < Rows; i++)
             {
-                var top = "|";
-                var bottom = "+";
+                string row1 = "";
+                string row2 = "";
 
-                foreach (var cell in row)
+                for (int j = 0; j < Columns; j++)
                 {
-                    //null check added for maskedgrid
-                    if (cell != null)
+                    //row 1
+                    var cell = this[i, j];
+                    
+                    //west wall responsibility
+                    if (IsCellNull(i, j))
+                    { 
+                        row1 += " ";
+                    }
+                    else if (cell.IsLinked(cell.West))
                     {
-                        var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
-                        var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
-                        top += body + eastBoundary;
-
-                        var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
-                        var corner = "+";
-                        bottom += southBoundary + corner;
+                        row1 += "|";
                     }
                     else
                     {
-                        //what to print for a null cell (only relevent if using a masked grid)  
+                        row1 += " ";
+                    }
 
-                        ////if (top == "|") top = " ";
+                    //cell responsibility
+                    if (IsCellNull(i, j))
+                    {
+                        row1 += "   ";
+                    }
+                    else
+                    {
+                        row1 += $"{ContentsOf(cell)}";
+                    }
+                        
 
-                        var body = $"{ContentsOf(cell)}";
-                        //var eastBoundary = "|";
-                        var eastBoundary = " ";
 
-                        top += body + eastBoundary;
+                    //row 2
 
-                        var southBoundary = "---";
-                        //var southBoundary = "   ";
-
-                        //var corner = "+";
-                        var corner = " ";
-
-                        ////if (bottom == "+") bottom = " ";
-                        bottom += southBoundary + corner;
+                    //corner responsibility + south border responsibility
+                    if (IsCellNull(i+1, j))
+                    {
+                        row2 += " ";  //corner
+                        row2 += "   "; //south border
+                    }
+                    else
+                    {
+                        row2 += "+";  //corner
+                        row2 += "---";  //south border
                     }
                 }
 
-                output += top + System.Environment.NewLine;
-                output += bottom + System.Environment.NewLine;
+                row1 += System.Environment.NewLine;
+                row2 += System.Environment.NewLine;
+
+                output.Add(row1 + row2);
             }
 
-            return output;
+
+
+            return String.Join<string>(String.Empty, output);
+
+
+
+            #region Obsolete
+
+            ////string output = "+";
+
+            ////// Top border
+            ////for (int i = 0; i < Columns; i++)
+            ////{
+            ////    string border = "    ";
+            ////    if (this[0, i] == null)
+            ////    {
+            ////        if (i == 0) output = "";
+            ////    }
+            ////    else
+            ////    {
+            ////        border = "---+";
+            ////    }
+
+            ////    output += border;
+            ////}
+            ////output += System.Environment.NewLine;
+
+            ////// Middle
+            ////foreach (var row in this.GetAllRows())
+            ////{
+            ////    var top = "|";
+            ////    var bottom = "+";
+
+            ////    foreach (var cell in row)
+            ////    {
+            ////        //null check added for maskedgrid
+            ////        if (cell != null)
+            ////        {
+            ////            var body = (displayGridCoordinates) ? $"{cell.row},{cell.column}" : $"{ContentsOf(cell)}";
+            ////            var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
+            ////            top += body + eastBoundary;
+
+            ////            var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
+            ////            var corner = "+";
+            ////            bottom += southBoundary + corner;
+            ////        }
+            ////        else
+            ////        {
+            ////            //what to print for a null cell (only relevent if using a masked grid)  
+
+            ////            ////if (top == "|") top = " ";
+
+            ////            var body = $"{ContentsOf(cell)}";
+            ////            //var eastBoundary = "|";
+            ////            var eastBoundary = " ";
+
+            ////            top += body + eastBoundary;
+
+            ////            var southBoundary = "---";
+            ////            //var southBoundary = "   ";
+
+            ////            //var corner = "+";
+            ////            var corner = " ";
+
+            ////            ////if (bottom == "+") bottom = " ";
+            ////            bottom += southBoundary + corner;
+            ////        }
+            ////    }
+
+            ////    output += top + System.Environment.NewLine;
+            ////    output += bottom + System.Environment.NewLine;
+            ////}
+
+            ////return output;
+
+            #endregion
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Infrastructure.Core
         {
             var list = _list.ToList();
             int index = GetRandomNumber(0, list.Count);
-            return  list[index];
+            return list[index];
         }
 
     }
