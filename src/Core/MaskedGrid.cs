@@ -110,6 +110,10 @@ namespace Infrastructure.Core
                     {
                         row1 += "|";
                     }
+                    else if (IsCellNull(i,j-1))
+                    {
+                        row1 += "|";
+                    }
                     else
                     {
                         row1 += " ";
@@ -124,17 +128,28 @@ namespace Infrastructure.Core
                     {
                         row1 += $"{ContentsOf(cell)}";
                     }
-                        
+
 
 
                     //row 2
 
                     //corner responsibility + south border responsibility
-                    if (IsCellNull(i+1, j))
+                    if (IsCellNull(i + 1, j))
+                    {
+                        row2 += "+";  //corner
+                        row2 += "---";  //south border
+                    }
+                    else if (IsCellNull(i, j))
                     {
                         row2 += " ";  //corner
                         row2 += "   "; //south border
                     }
+                    else if (cell.IsLinked(cell.South))
+                    {
+                        row2 += " ";  //corner
+                        row2 += "   "; //south border
+                    }
+
                     else
                     {
                         row2 += "+";  //corner
