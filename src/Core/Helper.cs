@@ -14,8 +14,21 @@ namespace Infrastructure.Core
         public static int GetRandomNumber(int min, int max)
         {
             lock (syncLock)
-            { // synchronize
+            {   // synchronize
                 return rnd.Next(min, max);
+            }
+        }
+
+        public static int GetRandomNumber(int max)
+        {
+            return GetRandomNumber(0, max);
+        }
+
+        public static double GetNextDouble()
+        {
+            lock (syncLock)
+            {   // synchronize
+                return rnd.NextDouble();
             }
         }
 
@@ -24,6 +37,21 @@ namespace Infrastructure.Core
             var list = _list.ToList();
             int index = GetRandomNumber(0, list.Count);
             return list[index];
+        }
+
+        public static IList<T> Shuffle<T>(this IList<T> list)
+        {
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = GetRandomNumber(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+
+            return list;
         }
 
     }

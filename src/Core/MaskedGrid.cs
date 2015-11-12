@@ -57,8 +57,18 @@ namespace Infrastructure.Core
         }
 
 
+        // new thoughts 10/11:
+        //1. Masked cells should have a "masked" property and inherit from cell
+        //2. They should still be created when using a mask (i.e. not null). 
+        //3. When created, are masks cells you can always link to, or not?
+        // ANSWER: A normal cell *cannot* link to a masked cell (and vice versa). But a null cell
+        //         But a null cell _always_ links to an adjacent null...for real, not just in display     
+        //4. If created on the edge of the grid
+        //         A regular cell behaves like normal.
+        //         But a null (masked) cell is open....in terms of display
 
-        //some thoughts:
+
+        //some thoughts 10/10:
         //1. Top and middle need to be handled differently. Not just assumed values when you start.
         //2. Use a i,j coordinate system, not a foreach loop. This gives us finer grain control over boundary cases on how they should be handled.
         //3. Each cell is responsible for itself *AND*  checking if a border below it is merited, and a border to the left (west) is merited (but see also 2)

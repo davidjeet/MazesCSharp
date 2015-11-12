@@ -50,6 +50,26 @@ namespace Infrastructure.Core
             }
         }
 
+        public void Braid(double p = 1.0)
+        {
+            foreach (var cell in DeadEnds.ToList().Shuffle())
+            {
+                if (!(cell.Links.Count !=1 && GetNextDouble() > p))
+                {
+                    // The next line is a bit hairy!!!
+                    var neighbors = cell.Neighbors.Where(x =>cell.IsLinked(x) == false);
+                    var best = neighbors.Where(x => x.Links.Count == 1);
+                    if (best.Count() == 0)
+                    {
+                        best = neighbors;
+                    }
+
+                    var neighbor = best.Sample();
+                    cell.Link(neighbor);
+                }
+            }
+        }
+
         protected virtual void Initialize(int _rows, int _columns)
         {
             Rows = _rows;

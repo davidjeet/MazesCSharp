@@ -13,16 +13,15 @@ namespace Recursive_Backtracker_Demo
     {
         static void Main(string[] args)
         {
-            var array = Enumerable.Range(0, 4)
-                      .Select(x => Enumerable.Repeat(true, 4).ToArray())
-                      .ToArray();
-
-
             IGrid grid = new Grid(10, 10);
             new RecursiveBacktracker().Run(ref grid);
-
+            Console.WriteLine("No Braiding");
             Console.WriteLine(grid.ToString(false));
-            ////Console.WriteLine(grid.ToDebug());
+            Console.ReadKey();
+
+            ((Grid)grid).Braid(0.5); // braiding
+            Console.WriteLine("With Braiding");
+            Console.WriteLine(grid.ToString(false));
             Console.ReadKey();
         }
     }
