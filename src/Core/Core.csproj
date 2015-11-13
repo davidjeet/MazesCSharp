@@ -55,6 +55,7 @@
     <Compile Include="Mask.cs" />
     <Compile Include="MaxResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeightedGrid.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -24,12 +24,7 @@ namespace Infrastructure.Core
 
                 while(pending.Any())
                 {
-                    WeightedCell cell = null;
-
-
-                    weights.
-                    foreach (var kvp in weights.)
-
+                    var cell = weights.Min.Cell as WeightedCell;
                     pending.Remove(cell);
 
                     foreach(WeightedCell neighbor in cell.Links)
