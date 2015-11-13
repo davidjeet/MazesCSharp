@@ -62,6 +62,26 @@ namespace Infrastructure.Core
             }
         }
 
+        public MaxResult Min
+        {
+            get
+            {
+                int? minDistance = 0;
+                Cell maxCell = root;
+
+                foreach (var key in cells.Keys)
+                {
+                    var distance = cells[key];
+                    if (distance < minDistance)
+                    {
+                        maxCell = key;
+                        minDistance = distance;
+                    }
+                }
+
+                return new MaxResult(maxCell, minDistance);
+            }
+        }
 
         public IEnumerable<Cell> Cells()
         {

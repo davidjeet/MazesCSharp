@@ -12,7 +12,7 @@ namespace Infrastructure.Core
         public int column { get; set; } = -1;
 
         /// Needed for Djikstra
-        public Distances Distances
+        public virtual Distances Distances
         {
             get
             {
@@ -51,7 +51,7 @@ namespace Infrastructure.Core
 
         public Cell West { get; set; }
 
-        private Dictionary<Cell, bool> links;
+        protected Dictionary<Cell, bool> links;
 
         /// <summary>All cells arround this cell (connected or not).</summary>
         public List<Cell> Neighbors
@@ -87,7 +87,7 @@ namespace Infrastructure.Core
             }
         }
 
-        private void Initialize(int _row, int _column)
+        protected void Initialize(int _row, int _column)
         {
             row = _row;
             column = _column;
