@@ -13,7 +13,7 @@ namespace Infrastructure.Algorithms
     {
         class State
         {
-            internal Stack<Cell []> Neighbors { get; set; } // TODO: issue 1, what structure is this
+            internal List<Cell []> Neighbors { get; set; } 
             internal Dictionary<Cell, int> setForCell { get; private set; }
             internal Dictionary<int, List<Cell>> cellsInSet { get; private set; }
             private IGrid grid;
@@ -21,7 +21,7 @@ namespace Infrastructure.Algorithms
             public State(ref IGrid _grid)
             {
                 grid = _grid;
-                Neighbors = new Stack<Cell []>();
+                Neighbors = new List<Cell []>();
                 setForCell = new Dictionary<Cell, int>();
                 cellsInSet = new Dictionary<int, List<Cell>>();
 
@@ -33,15 +33,12 @@ namespace Infrastructure.Algorithms
 
                     if (cell.South !=null)
                     {
-                        // TODO: issue 2, what structure is this
-                        Neighbors.Push(new Cell[] { cell, cell.South });
+                        Neighbors.Add(new Cell[] { cell, cell.South });
                     }
                     if (cell.East != null)
                     {
-                        // TODO: issue 3, what structure is this
-                        Neighbors.Push(new Cell[] { cell, cell.East });
+                        Neighbors.Add(new Cell[] { cell, cell.East });
                     }
-
                 }
             }
 
@@ -57,7 +54,7 @@ namespace Infrastructure.Algorithms
                 var winner = setForCell[left];
                 var loser = setForCell[right];
                 var losers = cellsInSet[loser];
-                losers.Add(right); // TODO: issue 4, poor ruby  interpretation?
+                losers.Add(right); // TODO:  Poor ruby  interpretation of || operator?
 
                 foreach (var cell in losers)
                 {
@@ -73,12 +70,11 @@ namespace Infrastructure.Algorithms
         public void Run(ref IGrid grid)
         {
             var state = new State(ref grid);
-            var neighbors = state.Neighbors; //  Shuffle<Cell>();
-            // TODO: issue 5, can't just shuffle Tuples!!!!1 
-
+            var _neighbors = state.Neighbors.Shuffle();     // Shuffle<Cell []>()
+            var neighbors = new Stack<Cell[]>(_neighbors);
+            
             while (neighbors.Any())
             {
-                // TODO: issue 6, suddenly we have stack like behavior?????
                 var pair = neighbors.Pop();
                 var left = pair[0];
                 var right = pair[1];
