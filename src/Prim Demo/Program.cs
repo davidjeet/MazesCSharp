@@ -16,9 +16,15 @@ namespace Prim_Demo
         {
             IGrid grid = new Grid(20, 20);
             new SimplifiedPrim().Run(ref grid);
-
+            Console.WriteLine("Simplified Prim");
             Console.WriteLine(grid.ToString(false));
-            ////Console.WriteLine(grid.ToDebug());
+            Console.ReadKey();
+
+
+            grid = new Grid(20, 20);
+            new TruePrim().Run(ref grid);
+            Console.WriteLine("True Prim");
+            Console.WriteLine(grid.ToString(false));
             Console.ReadKey();
         }
     }

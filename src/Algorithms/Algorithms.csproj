@@ -43,6 +43,7 @@
     <Compile Include="AldousBroder.cs" />
     <Compile Include="Kruskals.cs" />
     <Compile Include="BinaryTree.cs" />
+    <Compile Include="TruePrim.cs" />
     <Compile Include="SimplifiedPrim.cs" />
     <Compile Include="RecursiveBacktracker.cs" />
     <Compile Include="HuntAndKill.cs" />
