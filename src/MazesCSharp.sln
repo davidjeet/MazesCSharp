@@ -36,6 +36,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple Mask Demo", "Simple 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mask From File Demo", "Mask From File Demo\Mask From File Demo.csproj", "{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kruskals Demo", "Kruskals Demo\Kruskals Demo.csproj", "{32E93032-6C34-48DC-9BF3-63F08AECF004}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,6 +92,10 @@ Global
 		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{32E93032-6C34-48DC-9BF3-63F08AECF004}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{32E93032-6C34-48DC-9BF3-63F08AECF004}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{32E93032-6C34-48DC-9BF3-63F08AECF004}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{32E93032-6C34-48DC-9BF3-63F08AECF004}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,5 +113,6 @@ Global
 		{EFAF810D-3224-4741-993A-49B6CFD211A1} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 		{C798B1B2-3419-4509-A953-E8B348C85827} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 		{3EED8ED1-08B6-4BA2-8FB4-E2D0A684401D} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
+		{32E93032-6C34-48DC-9BF3-63F08AECF004} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 	EndGlobalSection
 EndGlobal
