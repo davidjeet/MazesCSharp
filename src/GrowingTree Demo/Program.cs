@@ -44,12 +44,17 @@ namespace GrowingTree_Demo
             return list.Last();
         }
 
+        private static Cell FirstSelection(IEnumerable<Cell> list)
+        {
+            return list.First();
+        }
+
         private static Cell MixedSelection(IEnumerable<Cell> list)
         {
             var rnd = GetRandomNumber(2);
-            return (rnd == 0) 
-                  ? list.Last() 
-                  : list.Sample();
+            return (rnd == 0)
+                  ? list.Last()
+                  : list.Sample(); // list.First();
         }
     }
 }
