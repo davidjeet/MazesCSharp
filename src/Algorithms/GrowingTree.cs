@@ -9,33 +9,24 @@ using static Infrastructure.Core.Helper;
 
 namespace Infrastructure.Algorithms
 {
-    public class TruePrim : IAlgorithms
+    public class GrowingTree : IGrowingTreeAlgorithms
     {
         private Stack<Cell> active;
-        private Dictionary<Cell, int> costs;
 
-        public void Run(ref IGrid grid)
+        public void Run(ref IGrid grid, Func<IEnumerable<Cell>, Cell> SelectionFunction)
         {
             var startAt = grid.GetRandomCell;
             active = new Stack<Cell>();
             active.Push(startAt);
 
-            costs = new Dictionary<Cell, int>();
-            foreach(var cell in grid)
-            {
-                costs[cell] = GetRandomNumber(0, 100);
-            }
-
-            int iterations = 1;
             while(active.Any())
             {
-                iterations++;
-                var cell = Min(active);  // Get the minimum value in the *active* set
+                var cell = SelectionFunction(active);  
                 var availableNeighbors = cell.Neighbors.Where(x => x.Links.Count == 0);
 
                 if (availableNeighbors.Any())
                 {
-                    var neighbor = Min(availableNeighbors); // Get the minimum value in the *availableNeighbors* set
+                    var neighbor = availableNeighbors.Sample();
                     cell.Link(neighbor);
                     active.Push(neighbor);
                 }
@@ -46,25 +37,7 @@ namespace Infrastructure.Algorithms
                     active = new Stack<Cell>(list);
                 }
             }
-            Console.WriteLine($"Iterations: {iterations}");
         }
 
-
-        private Cell Min(IEnumerable<Cell> cells)
-        {
-            Cell lowest = null;
-            int lowestValue = int.MaxValue;
-            foreach(var cell in cells)
-            {
-                int cost = costs[cell];
-                if (cost < lowestValue)
-                {
-                    lowestValue = cost;
-                    lowest = cell;
-                }
-            }
-
-            return lowest;
-        }
     }
 }
