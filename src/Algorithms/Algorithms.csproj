@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RecursiveDivision.cs" />
     <Compile Include="AldousBroder.cs" />
     <Compile Include="IAlgorithms - Copy.cs" />
     <Compile Include="Kruskals.cs" />
