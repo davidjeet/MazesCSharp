@@ -42,6 +42,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Prim Demo", "Prim Demo\Prim
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrowingTree Demo", "GrowingTree Demo\GrowingTree Demo.csproj", "{0F6E4412-CC6A-4AE9-994B-A93FF09D5D42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Recursive Division Demo", "Recursive Division Demo\Recursive Division Demo.csproj", "{26BD5B06-0EF5-49D3-BFEA-851792A3E4DD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -108,6 +110,10 @@ Global
 		{0F6E4412-CC6A-4AE9-994B-A93FF09D5D42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F6E4412-CC6A-4AE9-994B-A93FF09D5D42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F6E4412-CC6A-4AE9-994B-A93FF09D5D42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26BD5B06-0EF5-49D3-BFEA-851792A3E4DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BD5B06-0EF5-49D3-BFEA-851792A3E4DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BD5B06-0EF5-49D3-BFEA-851792A3E4DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BD5B06-0EF5-49D3-BFEA-851792A3E4DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +134,6 @@ Global
 		{32E93032-6C34-48DC-9BF3-63F08AECF004} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 		{EFA49C88-E02F-44A4-95AF-7BEBBA3C7018} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 		{0F6E4412-CC6A-4AE9-994B-A93FF09D5D42} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
+		{26BD5B06-0EF5-49D3-BFEA-851792A3E4DD} = {05C79038-4F93-4190-B5DE-3AFFBE15F75F}
 	EndGlobalSection
 EndGlobal
