@@ -11,7 +11,7 @@ namespace Infrastructure.Algorithms
 {
     public class RecursiveDivision : IAlgorithms
     {
-        private IGrid grid;
+        private static IGrid grid;
         public void Run(ref IGrid _grid)
         {
             grid = _grid;
@@ -50,7 +50,7 @@ namespace Infrastructure.Algorithms
                 if (passageAt != x)
                 {
                     var cell = grid[row + divideSouthOf, column + x];
-                    grid[row + divideSouthOf, column + x].UnLink(cell.South);
+                    grid[row + divideSouthOf, column + x].UnLink(grid[row + divideSouthOf, column + x].South);
                 }
             }
 
@@ -68,7 +68,7 @@ namespace Infrastructure.Algorithms
                 if (passageAt != y)
                 {
                     var cell = grid[row + y, column + divideEastOf];
-                    grid[row + y, column + divideEastOf].UnLink(cell.East);
+                    grid[row + y, column + divideEastOf].UnLink(grid[row + y, column + divideEastOf].East);
                 }
             }
 
