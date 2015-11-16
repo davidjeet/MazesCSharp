@@ -11,7 +11,7 @@ namespace Infrastructure.Algorithms
 {
     public class RecursiveDivision : IAlgorithms
     {
-        private static IGrid grid;
+        private IGrid grid;
         public void Run(ref IGrid _grid)
         {
             grid = _grid;
@@ -25,20 +25,20 @@ namespace Infrastructure.Algorithms
             }
 
             Divide(0, 0, grid.Rows, grid.Columns);
-
         }
 
-        private void Divide(int row, int column, int height, int width)
+        private void Divide(int row, int column, int height, int width, Func<int,int,bool> DividerCriteria = null)
         {
-            if (height <= 1 || width <= 1) return;
+            ////if (DividerCriteria ==null) DividerCriteria = DefaultDivider;
+            if (DividerCriteria == null) DividerCriteria = RoomDivider;
+            
+            if (DividerCriteria(height, width)) return;
 
             if (height > width)
                 DivideHorizontally(row, column, height, width);
             else
                 DivideVertically(row, column, height, width);
         }
-
-
 
         private void DivideHorizontally(int row, int column, int height, int width)
         {
@@ -50,7 +50,7 @@ namespace Infrastructure.Algorithms
                 if (passageAt != x)
                 {
                     var cell = grid[row + divideSouthOf, column + x];
-                    grid[row + divideSouthOf, column + x].UnLink(grid[row + divideSouthOf, column + x].South);
+                    cell.UnLink(cell.South);
                 }
             }
 
@@ -68,12 +68,23 @@ namespace Infrastructure.Algorithms
                 if (passageAt != y)
                 {
                     var cell = grid[row + y, column + divideEastOf];
-                    grid[row + y, column + divideEastOf].UnLink(grid[row + y, column + divideEastOf].East);
+                    cell.UnLink(cell.East);
                 }
             }
 
             Divide(row, column, height, divideEastOf + 1);
             Divide(row, column + divideEastOf + 1, height, width - divideEastOf - 1);
+        }
+
+
+        private bool DefaultDivider(int height, int width)
+        {
+            return (height <= 1 || width <= 1);
+        }
+
+        private bool RoomDivider(int height, int width)
+        {
+            return (height <= 1 || width <= 1 || (height < 5 && width <5 && GetRandomNumber(4) == 0));
         }
     }
 }

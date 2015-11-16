@@ -108,11 +108,8 @@ namespace Infrastructure.Core
         public Cell UnLink(Cell cell, bool bidirectional = true)
         {
             if (links.ContainsKey(cell))
-            {
                 links.Remove(cell);
-            }
-               
-
+                         
             if (bidirectional)
                 cell.UnLink(this, false);
 

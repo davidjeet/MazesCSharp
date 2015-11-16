@@ -172,8 +172,23 @@ namespace Infrastructure.Core
                     var eastBoundary = cell.IsLinked(cell.East) ? " " : "|";
                     top += body + eastBoundary;
 
+                    var southCell = cell.South ?? cell;
+                    var eastCell = cell.East ?? cell;
+                    var northCell = cell.North ?? cell;
+                    var westCell = cell.West ?? cell;
+
+                    if (southCell.IsLinked(southCell.South) && eastCell.IsLinked(eastCell.East) && northCell.IsLinked(northCell.North) && westCell.IsLinked(westCell.West))
+                    {
+                       if (bottom == "+")
+                        {
+                            bottom = " ";
+                        }
+                    }
+
                     var southBoundary = cell.IsLinked(cell.South) ? "   " : "---";
-                    var corner = "+";
+                    var corner = cell.IsLinked(cell.South) && cell.IsLinked(cell.East) && cell.IsLinked(cell.North) && cell.IsLinked(cell.West)
+                               ? " "
+                               : "+";
                     bottom += southBoundary + corner;
                 }
 
