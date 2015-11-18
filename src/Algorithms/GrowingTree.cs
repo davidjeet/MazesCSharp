@@ -13,7 +13,7 @@ namespace Infrastructure.Algorithms
     {
         private Stack<Cell> active;
 
-        public void Run(ref IGrid grid, Func<IEnumerable<Cell>, Cell> SelectionFunction)
+        public void Run(ref IGrid grid, SelectionFunction SelectionFunction)
         {
             var startAt = grid.GetRandomCell;
             active = new Stack<Cell>();
