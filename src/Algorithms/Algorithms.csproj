@@ -42,7 +42,7 @@
   <ItemGroup>
     <Compile Include="RecursiveDivision.cs" />
     <Compile Include="AldousBroder.cs" />
-    <Compile Include="IAlgorithms - Copy.cs" />
+    <Compile Include="IGrowingTreeAlgorithms.cs" />
     <Compile Include="Kruskals.cs" />
     <Compile Include="BinaryTree.cs" />
     <Compile Include="GrowingTree.cs" />
