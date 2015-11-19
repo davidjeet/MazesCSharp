@@ -2,7 +2,7 @@
 
 
 ###Algorthims
-Not all algorithms in the book are covered here, but the majority are. At a basic level, these are covered:
+Not all algorithms in the book are covered here, but the majority are. At a basic level, these 10 are covered:
 
 * AldousBroder
 * BinaryTree
@@ -14,6 +14,8 @@ Not all algorithms in the book are covered here, but the majority are. At a basi
 * SideWinder
 * SimplifiedPrim (precursor to TruePrim)
 * TruePrim (precursor to GrowingTree) 
+
+**NOTE:** This does not include demos including Dijikstra or Masked Grids.
 
 ###Solution Layout
  There are two solution folders:
@@ -27,7 +29,8 @@ Not all algorithms in the book are covered here, but the majority are. At a basi
 ###Future
 Some ideas going forward:
 * Consolidate all of the Maze Demos to a single console application where the user selects the type of algorithm to run and the relevent parameters. 
-* Implement IEnumerator for the grid.
+* Get the Masked Grid stuff displaying properly/more cleanly (hard).
+* Work on pulling in Dijkstra and deadend counts more...
 * Consolidate the IGrowingTreeAlgorithms and IAlgorithms interfaces.
 * Maybe refactor namespaces in Infrastructure to fewer.
 * Work on a more robust/pretty console display method. 

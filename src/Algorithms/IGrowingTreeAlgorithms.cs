@@ -9,7 +9,6 @@ namespace Infrastructure.Algorithms
     //equivalent to Func<IEnumerable<Cell> cellList, Cell>
 
     public interface IGrowingTreeAlgorithms
-
     {
         void Run(ref IGrid grid, SelectionFunction selectionFunction);
     }
